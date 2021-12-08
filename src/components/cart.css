@@ -1,8 +1,8 @@
-
-
-img.logo{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+.Cart{
+   margin: auto;
+   position: absolute;
+  left: 90%;
+  top: 10px;
+ 
+}
   

@@ -7,7 +7,7 @@ import logo from '../carta.png';
 const CartWidget= () => {
     return (
         <div>
-            <img className="logo" src={logo} alt="logo"/>
+            <img src={logo} alt="logo"/>
         </div>
        
     )
