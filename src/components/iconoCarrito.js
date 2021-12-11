@@ -9,7 +9,6 @@ const Carrito= () => {
         <div>
             <img src={icono} alt="icono"/>
         </div>
-       
     )
 }
 
