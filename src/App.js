@@ -2,15 +2,14 @@
 import './App.css';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import NavBar from './components/navBar.js';
-import Saludo from './components/ItemListContaner.js';
-import ClassButton from './components/button.js';
+import ItemListContainer from './components/ItemListContainer.js';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
 return (
   <> 
-    <NavBar />
-    <Saludo persona="PAGINA REACT"/>
-    <ClassButton/>
+    <NavBar />,
+    <ItemListContainer/>
   </>
 
 );
