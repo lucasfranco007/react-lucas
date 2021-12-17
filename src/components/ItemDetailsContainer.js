@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ItemDetail } from '../components/ItemDetails';
 
+//DESAFIO 7
 
 const productos = [
     {
