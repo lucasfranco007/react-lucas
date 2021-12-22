@@ -1,31 +1,13 @@
-import React from "react";
-import { Card, Button } from 'react-bootstrap';
+import "../styles/ItemStyles.css";
 
-const Item = ({ jsonpack }) => {
+function Item(props) {
     return (
         <>
-            <Card border="light" bg="dark" style={{ width: '10rem' }}
-                className="mb-2">
-
-                <Card.Header>
-
-                    <Card.Img variant="top" src={jsonpack.pictureurl} />
-                </Card.Header>
-                <Card.Body>
-                    <Card.Title>{jsonpack.title}</Card.Title>
-                    <Card.Subtitle className="mb-2 text-muted">Precio:{jsonpack.price}</Card.Subtitle>
-                    <Card.Text>
-                        Descripción<p></p>{jsonpack.description}
-                    </Card.Text>
-                </Card.Body>
-            </Card>
+            <img src={props.pictureUrl} className="item-image" alt="Imagen de producto" />
+            <p className="item-title">{props.title}</p>
+            <p className="item-precio">Precio: ${props.price}</p>
         </>
-
-
-    );
-
-};
-
-
+    )
+}
 
 export default Item;

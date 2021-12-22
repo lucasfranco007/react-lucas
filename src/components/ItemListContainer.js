@@ -1,41 +1,46 @@
+import Container from "react-bootstrap/Container";
+import "../styles/ItemListContainerStyles.css";
+import ItemList from "./ItemList";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import productsMock from "../mockData.js";
+import Header from "./Header";
 
-import ItemList from './ItemList';
-import Item from './Item';
-import jsonpack from './data.json';
-import React, { useState, useEffect } from 'react';
+function ItemListContainer() {
 
-const ItemListContainer = ({ name }) => {
-    const [item, setItems] = useState([])
-    const call = new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve(jsonpack)
-        }, 2000)
-    })
+    const [productsArray, setProductsArray] = useState([])
+    const { categoryName } = useParams();
 
-    call.then(response => {
-        setItems(response)
-    })
+    useEffect(() => {
+
+        const filterProductsByCategory = () => {
+            if (categoryName === undefined)
+                return productsMock();
+            else
+                return productsMock().filter(prod => prod.category === categoryName);
+        }
+
+        const asynncMock = new Promise((resolve) => {
+            setTimeout(() => {
+                resolve(filterProductsByCategory());
+            }, 2000);
+        })
+
+        asynncMock.then((res) => setProductsArray(res));
+
+    }, [categoryName]);
 
 
+    const showCategoryName = () => categoryName === undefined ? "EL DIEGO INDUMENTARIA" : categoryName.replace(categoryName[0], categoryName[0].toUpperCase());
 
     return (
-
-        <div name="test">
-
-
-
-            <div class="p-3 mb-2 bg-dark text-white row justify-content-center">
-                {name}
-
-                <ItemList items={item} />
-
-            </div>
-
-
-
-        </div>
+        <>
+            <Header title={showCategoryName()} />
+            <Container className="mb-5">
+                <ItemList productArray={productsArray} />
+            </Container>
+        </>
     )
 }
-
 
 export default ItemListContainer;

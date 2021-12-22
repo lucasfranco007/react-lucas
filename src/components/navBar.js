@@ -1,37 +1,45 @@
-import React from 'react'
-import CartWidget from './CartWidget'
-import './cart.css'
-import Carrito from './iconoCarrito'
+import React from "react";
+import logo from "../img/eldiegologo.png";
+import CartWidget from "./CartWidget";
+import "../styles/NavBarStyles.css";
+import Common from "./Common";
+import { NavLink } from "react-router-dom";
 
+let cantidad = 4;
 
-const navbar = () => {
-  return (
-    <div>
-
-      <nav className="navbar navbar-expand-lg navbar-ligth bg-dark">
-        <div className="container-fluid">
-          <div className=" navbar">
-            <CartWidget />
-          </div>
-          <a className="navbar-brand">MI PAGINA</a>
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div className="navbar-nav">
-              <a className="nav-link active" aria-current="page" href="#">Home</a>
-              <a className="nav-link" href="#">Productos</a>
-
-              <div className="nav-link Cart">
-                <a className="logotipo"><Carrito/></a>
-              </div>   
-                        
-            </div>
-          </div>
-        </div>
-      </nav>
-    </div>
-  )
+function Nav() {
+    return (
+        <nav>
+            <ul className="nav_links">
+                <NavLink to={`/`}><button>Home</button></NavLink>
+                <li><NavLink to={"/category/buzos"}><Common.Enlace text="Buzos" clase={"nav_links"} /></NavLink></li>
+                <li><NavLink to={"/category/remeras"}><Common.Enlace text="Remeras" clase={"nav_links"} /></NavLink></li>
+                <li><NavLink to={"/category/pantalones"}><Common.Enlace text="Pantalones" clase={"nav_links"} /></NavLink></li>
+                <li><NavLink to={"/category/zapatillas"}><Common.Enlace text="Zapatillas" clase={"nav_links"} /></NavLink></li>
+            </ul>
+        </nav>
+    )
 }
 
-export default navbar;
+function LogoAndName() {
+    return (
+        <NavLink to={`/`}>
+            <div className="logo-name-container">
+                <img src={logo} className="logo" alt="logo" />
+                <Common.Title text="EL DIEGO" clase={"title"} />
+            </div>
+        </NavLink>
+    )
+}
+
+function NavBar() {
+    return (
+        <div className="navbar-container">
+            <LogoAndName />
+            <Nav />
+            <CartWidget cantidad={cantidad} />
+        </div>
+    )
+}
+
+export default NavBar;

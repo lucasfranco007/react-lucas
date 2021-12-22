@@ -1,15 +1,18 @@
-import React from 'react';
-import Item from './Item';
+import Item from "./Item";
+import Row from "react-bootstrap/Row";
+import { NavLink } from 'react-router-dom';
 
-function ItemList({ items }) {
-    console.log(items);
+function ItemList({productArray}) {
+
     return (
-        <>
-            {items.map(item => <Item key={item.id} jsonpack={item} />
-            )}
-        </>
-    );
+        <Row md={12}>
+            {productArray.map((value) => {
+                return  <NavLink to={`/item/${value.id}`} className="item-container" key={value.id}>
+                            <Item title={value.title} price={value.price} pictureUrl={value.pictureUrl} />
+                        </NavLink>
+            })}
+        </Row>
+    )
 }
-
 
 export default ItemList;

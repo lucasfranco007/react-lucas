@@ -1,15 +1,13 @@
-import React from 'react';
-import { CardImg } from 'react-bootstrap';
-import logo from '../carta.png';
-//import './cart.css'
+import Image from "react-bootstrap/Image";
+import cart from "../img/carrito.png"
+import "../styles/CartWidgetStyles.css"
 
-
-const CartWidget= () => {
+function CartWidget(props) {
     return (
-        <div>
-            <img src={logo} alt="logo"/>
+        <div className="circle">
+            <Image src={cart} className="size" />
+            <p>{props.cantidad}</p>
         </div>
-       
     )
 }
 
